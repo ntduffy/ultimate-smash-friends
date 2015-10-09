@@ -149,11 +149,11 @@ class Section(object):
         double-quoted strings, extra white-space is trimmed, so you need not
         worry. For example::
 
-            foo = bar
+            foo   =             bar
 
         Equivalent to::
 
-            foo   =             baz
+            foo = bar
     """
     def __init__(self, name):
         """ Initialize a new section.
