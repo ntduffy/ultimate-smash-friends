@@ -283,10 +283,14 @@ class Config(object):
              self._paths['config']) = abs_paths
 
         # create paths if they don't exist
-        #TODO: exception handling for unwritable paths
         for path in self._paths.values():
             if not os.path.exists(path):
-                os.makedirs(path)
+		if not os.access(path, os.W_OK): # if the path is unwritable
+			# TODO test this on all platforms
+			print("error: path cannot be written to")
+			sys.exit() #fuck
+		else:
+                	os.makedirs(path)
 
         self.read()
 
